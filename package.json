@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha test/test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rinti/booli-api.git"
+  },
   "keywords": [
     "booli",
     "api",
