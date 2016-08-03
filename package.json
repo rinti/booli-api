@@ -1,0 +1,26 @@
+{
+  "name": "booli-api",
+  "version": "0.0.1",
+  "description": "a nodejs wrapper for booli api",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "keywords": [
+    "booli",
+    "api",
+    "booli-api"
+  ],
+  "author": "Andreas Bernacca",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^1.5.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "coveralls": "^2.11.12",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.0"
+  }
+}
