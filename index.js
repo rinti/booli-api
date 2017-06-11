@@ -2,13 +2,13 @@ const crypto = require("crypto")
 const fetch = require("node-fetch")
 
 class Booli {
-  constructor(caller_id, api_key) {
-    if(!api_key || !caller_id) {
+  constructor(callerId, apiKey) {
+    if(!apiKey || !callerId) {
       throw "You need to provide both an api key and a caller id"
     }
-    this.api_key = api_key
-    this.caller_id = caller_id
-    this.api_url = "https://api.booli.se/"
+    this.apiKey = apiKey
+    this.callerId = callerId
+    this.apiUrl = "https://api.booli.se/"
   }
 
   _transformObjectToQuerystring(obj) {
@@ -25,9 +25,8 @@ class Booli {
     const unixTimestamp = +new Date()
     const uniqueIdentifier = Math.floor(Math.random() * 10e20).toString(20).substr(0, 16)
     let sha = crypto.createHash("sha1")
-    sha.update(this.caller_id + unixTimestamp + this.api_key + uniqueIdentifier)
-    return "callerId=" + this.caller_id + "&time=" + unixTimestamp +
-           "&unique=" + uniqueIdentifier + "&hash=" + sha.digest("hex")
+    sha.update(this.callerId + unixTimestamp + this.apiKey + uniqueIdentifier)
+    return `callerId=${this.callerId}&time=${unixTimestamp}&unique=${uniqueIdentifier}&hash=${sha.digest("hex")}`
   }
 
   _validateObject(obj) {
@@ -44,7 +43,7 @@ class Booli {
     if(obj) {
       queryString = "&" + this._transformObjectToQuerystring(obj)
     }
-    return fetch(this.api_url + endpoint + "/?" + this._authQuerystring() + queryString)
+    return fetch(this.apiUrl + endpoint + "/?" + this._authQuerystring() + queryString)
   }
 
   listings(obj) {

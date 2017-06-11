@@ -1,6 +1,6 @@
 {
   "name": "booli-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a nodejs wrapper for booli api",
   "main": "index.js",
   "scripts": {
